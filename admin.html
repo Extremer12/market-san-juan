@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración — Market San Juan</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background:var(--bg-alt);">
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-header" style="padding-bottom:100px;">
+    <div class="page-header__orb"></div>
+    <div class="container">
+      <h1 style="display:flex;align-items:center;gap:12px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:36px;height:36px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg> 
+        Panel de Administración
+      </h1>
+      <p>Control centralizado de moderación, métricas y seguridad ciudadana</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;margin-top:-70px;position:relative;z-index:10;">
+    <div class="container">
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:40px;">
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--primary);"></div>
+          <div class="stat-card__label">Usuarios Registrados</div>
+          <div class="stat-card__value" style="color:var(--primary);">1,234</div>
+          <div class="stat-card__change" style="color:var(--success);display:flex;align-items:center;gap:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +23 esta semana
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--success);"></div>
+          <div class="stat-card__label">Publicaciones Activas</div>
+          <div class="stat-card__value" style="color:var(--success);">456</div>
+          <div class="stat-card__change" style="color:var(--success);display:flex;align-items:center;gap:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +12 hoy
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--warning);"></div>
+          <div class="stat-card__label">Alertas Activas</div>
+          <div class="stat-card__value" style="color:var(--warning);">1</div>
+          <div class="stat-card__change" style="color:var(--warning);display:flex;align-items:center;gap:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Requiere atención
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--info);"></div>
+          <div class="stat-card__label">Tiendas Registradas</div>
+          <div class="stat-card__value" style="color:var(--info);">67</div>
+          <div class="stat-card__change" style="color:var(--success);display:flex;align-items:center;gap:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +5 este mes
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px;">
+        <!-- Moderation Queue -->
+        <div class="card" style="padding:32px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+            <h3 style="font-size:1.3rem;display:flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;color:var(--warning);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Cola de Moderación
+            </h3>
+            <span class="badge badge--warning" id="adminQueueCount">Cargando...</span>
+          </div>
+          
+          <div style="display:flex;flex-direction:column;gap:16px;" id="adminQueueList">
+             <!-- Renderizado Dinámicamente desde app.js -->
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card" style="padding:32px;">
+          <h3 style="font-size:1.3rem;margin-bottom:24px;display:flex;align-items:center;gap:8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;color:var(--info);"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Actividad Reciente
+          </h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--success-light);color:var(--success);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-size:0.9rem;color:var(--text);"><strong style="color:var(--primary-dark);">Carlos R.</strong> completó verificación de identidad con RENAPER.</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Hace 15 min</div>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--info-light);color:var(--info);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-size:0.9rem;color:var(--text);"><strong style="color:var(--primary-dark);">Dulces del Valle</strong> registró una nueva tienda comercial.</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Hace 1 hora</div>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--danger-light);color:var(--danger);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-size:0.9rem;color:var(--text);"><strong>Denuncia:</strong> Usuario anónimo reportó publicación #847A por presunto sobreprecio ilegal.</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Hace 3 horas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
