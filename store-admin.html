@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrar Tienda — Market San Juan</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .color-picker {
+      display: flex; gap: 12px; margin-top: 12px;
+    }
+    .color-swatch {
+      width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+      border: 3px solid transparent; transition: all var(--duration) var(--ease);
+      box-shadow: var(--shadow-sm);
+    }
+    .color-swatch.active { border-color: var(--text); transform: scale(1.1); box-shadow: var(--shadow-lg); }
+  </style>
+</head>
+<body style="background:var(--bg-alt);">
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-header" style="padding-bottom:100px;background:var(--bg-dark);">
+    <div class="container">
+      <h1 style="display:flex;align-items:center;gap:12px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:36px;height:36px;color:var(--accent);"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/></svg> 
+        Gestión de Tienda
+      </h1>
+      <p>Centro de control para ventas, métricas y branding de tu comercio.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;margin-top:-60px;position:relative;z-index:10;">
+    <div class="container">
+      
+      <!-- Metrics Row -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:40px;">
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--success);"></div>
+          <div class="stat-card__label">Facturación Mensual</div>
+          <div class="stat-card__value" style="color:var(--success);">$1.2M</div>
+          <div class="stat-card__change" style="color:var(--success);display:flex;align-items:center;gap:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +15% vs Mes anterior
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--info);"></div>
+          <div class="stat-card__label">Visitas a tu Catálogo</div>
+          <div class="stat-card__value" style="color:var(--info);">4,821</div>
+          <div class="stat-card__change" style="color:var(--success);display:flex;align-items:center;gap:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +34 hoy
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__accent" style="background:var(--accent);"></div>
+          <div class="stat-card__label">Consultas Activas (Chat)</div>
+          <div class="stat-card__value" style="color:var(--text);">12</div>
+          <div class="stat-card__change" style="color:var(--warning);display:flex;align-items:center;gap:4px;">
+            <a href="chat.html" style="color:var(--primary);text-decoration:underline;">Ver todas conectadas</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+        <!-- Formulario Branding -->
+        <div class="card" style="padding:40px;">
+          <h2 style="font-size:1.6rem;margin-bottom:24px;border-bottom:1px solid var(--border-subtle);padding-bottom:16px;">
+            Personalización Comercial
+          </h2>
+          <form onsubmit="handleStoreBrandingUpdate(event)">
+            <div class="form-group">
+              <label class="form-label" for="brandName">Nombre Comercial de Exhibición</label>
+              <input type="text" id="brandName" class="form-input" placeholder="Ej: Tech San Juan" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="brandDesc">Descripción Biográfica (Slogan)</label>
+              <textarea id="brandDesc" class="form-input form-textarea" placeholder="¿A qué se dedica tu comercio?" maxlength="120" required></textarea>
+              <div class="form-helper">Breve bajada debajo del título. Máximo 120 caracteres.</div>
+            </div>
+
+            <div class="form-group" style="margin-top:32px;margin-bottom:40px;">
+              <label class="form-label">Color de Identidad (Banner y Acentos)</label>
+              <div class="color-picker" id="brandColorPicker">
+                <!-- Color Swatches: Blue, Emerald, Amber, Violet -->
+                <div class="color-swatch active" data-color="linear-gradient(135deg, #2563eb 0%, #083344 100%)" style="background:linear-gradient(135deg, #2563eb 0%, #083344 100%);" onclick="selectStoreColor(this)"></div>
+                <div class="color-swatch" data-color="linear-gradient(135deg, #10b981 0%, #064e3b 100%)" style="background:linear-gradient(135deg, #10b981 0%, #064e3b 100%);" onclick="selectStoreColor(this)"></div>
+                <div class="color-swatch" data-color="linear-gradient(135deg, #d97706 0%, #78350f 100%)" style="background:linear-gradient(135deg, #d97706 0%, #78350f 100%);" onclick="selectStoreColor(this)"></div>
+                <div class="color-swatch" data-color="linear-gradient(135deg, #8b5cf6 0%, #4c1d95 100%)" style="background:linear-gradient(135deg, #8b5cf6 0%, #4c1d95 100%);" onclick="selectStoreColor(this)"></div>
+                <div class="color-swatch" data-color="linear-gradient(135deg, #ec4899 0%, #831843 100%)" style="background:linear-gradient(135deg, #ec4899 0%, #831843 100%);" onclick="selectStoreColor(this)"></div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Guardar Cambios de Tienda
+            </button>
+          </form>
+        </div>
+
+        <!-- Inventory quick view -->
+        <div class="card" style="padding:40px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-subtle);padding-bottom:16px;margin-bottom:24px;">
+            <h2 style="font-size:1.6rem;margin:0;">Catálogo Activo</h2>
+            <button class="btn btn-outline btn-sm" onclick="window.location='publish.html'">Cargar Nuevo</button>
+          </div>
+          
+          <div id="storeAdminInventory" style="display:flex;flex-direction:column;gap:16px;">
+            <!-- Renderizado desde app.js (Sólo muestra de la misma tienda) -->
+            <p style="color:var(--text-muted);">Cargando catálogo interno...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

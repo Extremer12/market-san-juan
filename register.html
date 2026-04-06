@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Cuenta — Market San Juan</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .role-card {
+      padding: 20px; border: 2px solid var(--border-subtle); border-radius: var(--radius-lg);
+      cursor: pointer; transition: all var(--duration) var(--ease);
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 16px; background: var(--bg-card);
+    }
+    .role-card:hover { border-color: var(--primary-light); background: var(--bg-alt); transform: translateY(-2px); }
+    .role-card.selected { border-color: var(--primary); background: var(--primary-lighter); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1); }
+    .role-card__icon {
+      width: 44px; height: 44px; border-radius: var(--radius); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .role-card__title { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .role-card__desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+    
+    .role-fields { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border-strong); }
+    .role-fields.active { display: block; animation: fadeIn var(--duration) var(--ease); }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-side" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
+      <div class="auth-side__orb" style="background:rgba(37, 99, 235, 0.15)"></div>
+      <div style="position:relative;z-index:2;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+          <div style="width:40px;height:40px;background:var(--primary-gradient);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-glow-primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="width:20px;height:20px;"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/></svg>
+          </div>
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:1.4rem;">Market San Juan</span>
+        </div>
+        
+        <h2>Plataforma Segmentada</h2>
+        <p>Unificamos el mercado provincial dividiendo los procesos entre compradores, emprendedores y logística oficial de entregas.</p>
+        
+        <div style="margin-top:44px;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:16px;padding:16px;background:rgba(255,255,255,0.05);border-radius:var(--radius);backdrop-filter:blur(8px);">
+            <div style="width:36px;height:36px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:#fff;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div><strong style="display:block;margin-bottom:2px;">Verificación Gubernamental</strong><span style="opacity:0.8;font-size:0.85rem;">Validaciones cruzadas en San Juan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-form" style="max-width:500px;">
+        
+        <!-- STEP 1: Selección de Rol -->
+        <div id="regStep1">
+          <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.88rem;margin-bottom:28px;transition:color var(--duration) var(--ease);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="m15 18-6-6 6-6"/></svg> Volver al inicio
+          </a>
+          <h1 style="font-size:2rem;">Crear Cuenta Multiservicio</h1>
+          <p class="auth-form__subtitle">Paso 1: ¿Cómo planeás usar nuestra plataforma?</p>
+
+          <div style="margin-top:32px;">
+            <div class="role-card" onclick="selectRole('user')">
+              <div class="role-card__icon" style="background:var(--primary-lighter);color:var(--primary);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div>
+                <div class="role-card__title">Usuario particular</div>
+                <div class="role-card__desc">Quiero explorar el marketplace, comprar servicios y publicar usados propios en mi departamento.</div>
+              </div>
+              <div class="role-indicator" style="margin-left:auto;align-self:center;color:var(--primary);display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+
+            <div class="role-card" onclick="selectRole('store')">
+              <div class="role-card__icon" style="background:var(--accent-lighter);color:var(--accent);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/></svg>
+              </div>
+              <div>
+                <div class="role-card__title">Tienda Oficial (Comercio)</div>
+                <div class="role-card__desc">Soy un negocio verificado. Quiero mi propio catálogo corporativo, insignia comercial y gestión en volumen.</div>
+              </div>
+              <div class="role-indicator" style="margin-left:auto;align-self:center;color:var(--accent);display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+
+            <div class="role-card" onclick="selectRole('driver')">
+              <div class="role-card__icon" style="background:var(--success-light);color:var(--success);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <div>
+                <div class="role-card__title">Conductor / Logística</div>
+                <div class="role-card__desc">Tengo vehículo en San Juan y quiero aceptar traslados de productos entre compradores y vendedores para generar ingresos extra.</div>
+              </div>
+              <div class="role-indicator" style="margin-left:auto;align-self:center;color:var(--success);display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+
+          <button id="btnContinueStep" class="btn btn-primary btn-lg" style="width:100%;margin-top:16px;" onclick="goToStep2()" disabled>Continuar Registro</button>
+          
+          <div class="auth-divider">o</div>
+          <p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;">
+            ¿Ya tenés cuenta? <a href="login.html" style="color:var(--primary);font-weight:600;">Iniciar sesión</a>
+          </p>
+        </div>
+
+        <!-- STEP 2: Datos de Identidad -->
+        <div id="regStep2" style="display:none;" class="anim-fade">
+          <button style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.88rem;margin-bottom:28px;transition:color var(--duration) var(--ease);background:none;border:none;cursor:pointer;padding:0;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'" onclick="goToStep1()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="m15 18-6-6 6-6"/></svg> Cambiar Rol
+          </button>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <h1 style="font-size:2rem;margin:0;">Completá tu Perfil</h1>
+            <span id="labelRolEscogido" class="badge badge--primary">Usuario</span>
+          </div>
+          <p class="auth-form__subtitle">Paso 2: Datos y Verificación de Credenciales</p>
+
+          <form id="multiRoleForm" onsubmit="handleMultiRegister(event)">
+            <!-- Bloque Fijo: Basic Info -->
+            <div class="form-group">
+              <label class="form-label">Nombre completo / Titular</label>
+              <input type="text" id="regName" class="form-input" placeholder="Tu nombre y apellido" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Correo Electrónico (Login)</label>
+              <input type="email" id="regEmail" class="form-input" placeholder="tu@email.com" required>
+            </div>
+
+            <!-- Bloques Dinámicos por Rol -->
+            <!-- DNI Normal (Para User y Driver) -->
+            <div id="fieldsDni" class="role-fields">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">DNI</label>
+                  <input type="text" id="regDni" class="form-input" placeholder="12345678" maxlength="8">
+                  <p class="form-helper" style="display:flex;align-items:center;gap:4px;color:var(--success);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg> Vinculado al RENAPER
+                  </p>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Departamento</label>
+                  <select id="regDept" class="form-input form-select">
+                    <option value="">Seleccioná</option>
+                    <option>Capital</option><option>Rawson</option><option>Rivadavia</option><option>Santa Lucía</option>
+                    <option>Chimbas</option><option>Pocito</option><option>Caucete</option><option>San Martín</option>
+                    <option>25 de Mayo</option><option>Albardón</option><option>Jáchal</option><option>Iglesia</option>
+                    <option>Calingasta</option><option>Valle Fértil</option><option>Ullum</option><option>Zonda</option>
+                    <option>Angaco</option><option>Sarmiento</option><option>9 de Julio</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campos Tienda -->
+            <div id="fieldsStore" class="role-fields">
+              <div class="form-group">
+                <label class="form-label">Nombre Comercial de la Tienda</label>
+                <input type="text" id="regStoreName" class="form-input" placeholder="Ej: Tech San Juan">
+              </div>
+              <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Número de CUIT</label>
+                  <input type="text" id="regCuit" class="form-input" placeholder="20-XXXXXXXX-X">
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Rubro principal</label>
+                  <select id="regRubro" class="form-input form-select">
+                    <option value="">Seleccioná</option>
+                    <option>Electrónica</option><option>Hogar</option>
+                    <option>Vehículos</option><option>Vestimenta</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campos Conductor -->
+            <div id="fieldsDriver" class="role-fields">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Tipo de Vehículo</label>
+                  <select id="regVehicle" class="form-input form-select">
+                    <option value="">Seleccioná</option>
+                    <option>Moto (Motomandadado)</option>
+                    <option>Auto Particular</option>
+                    <option>Camioneta Urbana</option>
+                    <option>Bicicleta</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Patente (Si aplica)</label>
+                  <input type="text" id="regLicensePos" class="form-input" placeholder="Ej: AB123CD">
+                </div>
+              </div>
+            </div>
+
+            <!-- Identidad Base de Contraseña y submit -->
+            <div class="form-group" style="margin-top:20px;">
+              <label class="form-label">Crea tu contraseña maestra</label>
+              <input type="password" id="regPassword" class="form-input" placeholder="Mínimo 8 caracteres" minlength="8" required>
+            </div>
+            <div class="form-group">
+              <label style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--text-secondary);cursor:pointer;line-height:1.4;">
+                <input type="checkbox" id="terms" required style="accent-color:var(--primary);margin-top:3px;">
+                Acepto los <a href="#" style="color:var(--primary);font-weight:500;">Términos de Responsabilidad</a> gubernamental institucional.
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Finalizar Validación</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

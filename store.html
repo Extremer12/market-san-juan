@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Oficial — Market San Juan</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <!-- Store Cover / Banner -->
+  <div id="storeBanner" style="height:350px;width:100%;background:linear-gradient(135deg, #10b981 0%, #06b6d4 100%);position:relative;margin-top:var(--nav-height);transition:background var(--duration) var(--ease);">
+    <div style="position:absolute;inset:0;opacity:0.1;background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.83-54.627 54.627-.83-.83L54.627 0zM29.627 0l.83.83-29.627 29.627-.83-.83L29.627 0zM4.627 0l.83.83-4.627 4.627-.83-.83L4.627 0zM59.17 4.627l.83.83-54.627 54.627-.83-.83L59.17 4.627zM59.17 29.627l.83.83-29.627 29.627-.83-.83L59.17 29.627zM59.17 54.627l.83.83-4.627 4.627-.83-.83L59.17 54.627z\' fill=\'%23ffffff\' fill-rule=\'evenodd\' fill-opacity=\'1\'/%3E%3C/svg%3E');"></div>
+  </div>
+
+  <section class="section" style="padding-top:0;margin-top:-80px;position:relative;z-index:10;">
+    <div class="container">
+      
+      <!-- Store Info Card -->
+      <div class="card" style="padding:48px;display:flex;gap:36px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow-xl);margin-bottom:56px;background:var(--bg-card);">
+        <div style="width:140px;height:140px;border-radius:var(--radius-lg);background:#fff;padding:8px;box-shadow:var(--shadow-md);flex-shrink:0;">
+          <div id="storeInitials" style="width:100%;height:100%;border-radius:calc(var(--radius-lg) - 6px);background:var(--primary-gradient);display:flex;align-items:center;justify-content:center;color:#fff;font-size:2.5rem;font-weight:800;font-family:var(--font-heading);transition:background var(--duration) var(--ease);">
+            TS
+          </div>
+        </div>
+        
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <h1 id="storeName" style="font-size:2.4rem;margin:0;letter-spacing:-0.03em;">Tech San Juan</h1>
+            <span class="badge badge--success" style="font-size:0.8rem;padding:6px 14px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg> Tienda Oficial
+            </span>
+          </div>
+          <p id="storeDesc" style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:20px;">Tecnología corporativa de alta exigencia, con garantía directa y envíos asegurados en San Juan.</p>
+          
+          <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:0.9rem;color:var(--text-secondary);">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Santa Lucía, San Juan
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;color:var(--text);">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:16px;height:16px;color:var(--accent);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> <strong>4.9</strong> (150+ ventas)
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Acepta MercadoPago
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;color:var(--success);font-weight:600;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Envíos a toda la provincia
+            </div>
+          </div>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;gap:12px;min-width:220px;">
+          <button class="btn btn-primary btn-lg" onclick="showToast('Agregado a tus tiendas favoritas','success')">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Seguir Tienda
+          </button>
+          <button class="btn btn-outline btn-lg" onclick="window.location='chat.html'">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Mensaje Directo
+          </button>
+        </div>
+      </div>
+
+      <!-- Store Filters -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px;">
+        <h2 style="font-size:1.6rem;font-weight:700;">Catálogo de Productos</h2>
+        <div class="search-bar" style="max-width:320px;">
+          <input id="storeSearchInput" type="text" placeholder="Buscar en esta tienda..." style="padding:14px 20px;" onkeyup="const val = this.value.toLowerCase(); renderProducts('storeProductsGrid', PRODUCTS.filter(p=>p.seller.name==='Tech San Juan' && p.title.toLowerCase().includes(val)))">
+        </div>
+      </div>
+
+      <div class="filter-bar" style="margin-top:0;">
+        <button class="filter-chip active" onclick="filterProducts('all', 'storeProductsGrid', PRODUCTS.filter(p=>p.seller.name==='Tech San Juan'))">Todos</button>
+        <button class="filter-chip" onclick="filterProducts('tech', 'storeProductsGrid', PRODUCTS.filter(p=>p.seller.name==='Tech San Juan'))">Tecnología</button>
+      </div>
+
+      <!-- Store Products Dinamicos -->
+      <div class="marketplace-grid" id="storeProductsGrid">
+         <!-- Renderizado via Javascript -->
+      </div>
+    </div>
+  </section>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
